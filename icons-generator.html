@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vier gewinnt - Icons Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .instructions {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .instructions h2 {
+            color: #475569;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .icon-sizes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .icon-size {
+            background: #f1f5f9;
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .icon-size strong {
+            display: block;
+            color: #1f2937;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .canvas-container {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .preview {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .warning {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 PWA Icons erstellen</h1>
+        
+        <div class="instructions">
+            <h2>So erstellst du die Icons:</h2>
+            <ol>
+                <li>Öffne die SVG-Datei in einem Browser (ziehe sie ins Fenster)</li>
+                <li>Mache einen Screenshot (Druck/PrtScn)</li>
+                <li>Füge ihn in ein Bildbearbeitungsprogramm ein</li>
+                <li>Speichere als PNG in den Größen:</li>
+            </ol>
+            
+            <div class="icon-sizes">
+                <div class="icon-size"><strong>72×72</strong>Android</div>
+                <div class="icon-size"><strong>96×96</strong>Android</div>
+                <div class="icon-size"><strong>128×128</strong>通用</div>
+                <div class="icon-size"><strong>144×144</strong>Android</div>
+                <div class="icon-size"><strong>152×152</strong>iPad</div>
+                <div class="icon-size"><strong>192×192</strong>Android/iOS</div>
+                <div class="icon-size"><strong>384×384</strong>Retina</div>
+                <div class="icon-size"><strong>512×512</strong>Play Store</div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <h2 style="color: #475569; font-size: 1rem; margin-bottom: 15px;">Icon-Vorschau:</h2>
+            <img src="icon-512.svg" alt="App Icon" class="preview" id="preview">
+        </div>
+
+        <p style="text-align: center; margin-top: 15px; color: #64748b; font-size: 0.9rem;">
+            Speichere alle PNG-Dateien im <code>images/</code> Ordner
+        </p>
+
+        <div class="warning">
+            <strong>Wichtig:</strong> Die Icons müssen im <code>images/</code> Ordner liegen mit den Namen:
+            <code>icon-72.png</code>, <code>icon-96.png</code>, usw.
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn" onclick="downloadSVG()">SVG herunterladen</button>
+        </div>
+    </div>
+
+    <script>
+        function downloadSVG() {
+            const svgContent = document.querySelector('.preview').src;
+            const a = document.createElement('a');
+            a.href = svgContent;
+            a.download = 'vier-gewinnt-icon.svg';
+            a.click();
+        }
+    </script>
+</body>
+</html>
